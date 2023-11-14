@@ -6,9 +6,9 @@ const MovieCard = ({ movie }) => {
     <section className="p-2">
       <div className="w-full max-w-sm bg-slate-700 border-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between h-full">
         <Link to={`/movies/${movie.imdbID}`}>
-          <img className="rounded-t-lg" src={movie.Poster} alt={movie.Title} />
+          <img className="rounded-xl" src={movie.Poster} alt={movie.Title} />
         </Link>
-        <div className="px-5 mt-10 pb-5">
+        <div className="px-5 lg:mt-10 mt-5 pb-5">
           <Link to={`/movies/${movie.imdbID}`}>
             <h5 className="mb-5 h-14 text-xl font-semibold tracking-tight text-white dark:text-white overflow-hidden overflow-ellipsis">
               {movie.Title}

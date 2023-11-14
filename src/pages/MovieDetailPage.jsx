@@ -25,7 +25,7 @@ const MovieDetailPage = () => {
   return (
     <div>
       <Navbar />
-      {movie ? <MovieDetail movie={movie} /> : <p>Loading...</p>}
+      <MovieDetail movie={movie} />
       <Footer />
     </div>
   );

@@ -37,15 +37,15 @@ const MovieDetail = ({ movie }) => {
       {loading ? (
         // Tampilkan elemen skeleton saat data sedang dimuat
         <div className="flex flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
-          <div className="skeleton h-screen w-full m-2"></div>
+          <div className="skeleton lg:h-screen h-72 w-50 lg:w-full m-2"></div>
           <div className="w-full m-2 ">
             <div className="skeleton h-4 w-28 p-5 my-5"></div>
-            <div className="skeleton h-4 w-full p-5 my-5 mx-auto"></div>
-            <div className="skeleton h-4 w-full p-5 my-5 mx-auto"></div>
+            <div className="skeleton h-4 lg:w-full p-5 my-5 lg:mx-auto mr-5"></div>
+            <div className="skeleton h-4 lg:w-full p-5 my-5 lg:mx-auto mr-5"></div>
             <div className="skeleton h-4 w-28 p-5 my-5"></div>
-            <div className="skeleton h-4 w-full p-5 my-5 mx-auto"></div>
+            <div className="skeleton h-4 w-full p-5 my-5 mx-auto hidden "></div>
           </div>
-          <div className="skeleton h-96 w-full m-2"></div>
+          <div className="skeleton h-96 w-full m-2 hidden lg:block"></div>
         </div>
       ) : (
         // Tampilkan konten sebenarnya setelah data dimuat

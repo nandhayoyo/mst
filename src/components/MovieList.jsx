@@ -49,7 +49,7 @@ const MovieList = () => {
           {loading ? (
             <div className="movie-list max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3">
               {[...Array(postsPerPage)].map((_, index) => (
-                <div key={index} className="flex flex-col gap-4 w-52">
+                <div key={index} className="flex flex-col gap-4 lg:w-52 w-40">
                   <div className="skeleton h-52 w-full"></div>
                   <div className="skeleton h-4 w-28"></div>
                   <div className="skeleton h-4 w-full"></div>
