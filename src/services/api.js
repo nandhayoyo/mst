@@ -9,6 +9,7 @@ export const getLatestMovies = async () => {
       params: {
         apikey: apiKey,
         s: "new",
+        y: 2023,
       },
     });
     return response.data.Search;
