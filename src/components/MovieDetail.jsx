@@ -33,9 +33,7 @@ const MovieDetail = ({ movie }) => {
 
   return (
     <>
-      {/* <div className="flex flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto"> */}
       {loading ? (
-        // Tampilkan elemen skeleton saat data sedang dimuat
         <div className="flex flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
           <div className="skeleton lg:h-screen h-72 w-50 lg:w-full m-2"></div>
           <div className="w-full m-2 ">
@@ -48,7 +46,6 @@ const MovieDetail = ({ movie }) => {
           <div className="skeleton h-96 w-full m-2 hidden lg:block"></div>
         </div>
       ) : (
-        // Tampilkan konten sebenarnya setelah data dimuat
         <div className="flex flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
           <div className="image lg:w-1/3 ">
             <img
@@ -63,7 +60,6 @@ const MovieDetail = ({ movie }) => {
               {" "}
               {movie.Title}
             </h1>
-            {/* ... (bagian lain dari konten sebenarnya) */}
             <h4 className="font-bold text-xl my-2 text-green-500">
               Rp. {generatedPrice || "N/A"}
             </h4>
@@ -80,7 +76,6 @@ const MovieDetail = ({ movie }) => {
           </div>
         </div>
       )}
-      {/* </div> */}
     </>
   );
 };
@@ -89,7 +84,7 @@ MovieDetail.propTypes = {
   movie: PropTypes.shape({
     imdbID: PropTypes.string.isRequired,
     Genre: PropTypes.string.isRequired,
-    Poster: PropTypes.string.isRequired,
+    // Poster: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Writer: PropTypes.string.isRequired,
     Director: PropTypes.string.isRequired,

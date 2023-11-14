@@ -47,7 +47,7 @@ const MovieList = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="bg-slate-700">
           {loading ? (
-            <div className="movie-list max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div className="movie-list max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
               {[...Array(postsPerPage)].map((_, index) => (
                 <div key={index} className="flex flex-col gap-4 lg:w-52 w-40">
                   <div className="skeleton h-52 w-full"></div>

@@ -26,8 +26,8 @@ const CartList = () => {
             </thead>
             <tbody className="items-center">
               {cart.map((item) => (
-                <tr key={item.imdbID} className="mb-5">
-                  <td>{item.Title}</td>
+                <tr key={item.imdbID} className="border-b-2">
+                  <td className="mb-10">{item.Title}</td>
                   <td>Rp. {item.Price.toLocaleString("id-ID")}</td>
                   <td className="text-center">{item.quantity}</td>
                   <td className="text-center">
