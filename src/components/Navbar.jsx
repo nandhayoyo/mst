@@ -3,9 +3,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 // import nyctimes_img from "../assets/logo_nyc.png";
 
 const navigation = [
-  { name: "Dashboard", href: "/", current: false },
-  { name: "Search", href: "/search", current: false },
+  { name: "Dashboard", href: "/", cursrent: false },
   { name: "Cart", href: "/cart", current: false },
+  { name: "Checkout", href: "/checkout", current: false },
 ];
 
 function classNames(...classes) {
