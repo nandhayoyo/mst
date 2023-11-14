@@ -48,7 +48,7 @@ export const useStore = create(
       }),
       {
         name: "movieStore",
-        getStorage: () => localStorage,
+        store: () => localStorage,
       }
     )
   )
