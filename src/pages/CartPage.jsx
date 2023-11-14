@@ -1,5 +1,6 @@
 import Cart from "../components/CartList";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const CartPage = () => {
   return (
@@ -7,6 +8,7 @@ const CartPage = () => {
       <>
         <Navbar />
         <Cart />
+        <Footer />
       </>
     </div>
   );

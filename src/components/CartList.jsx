@@ -9,7 +9,7 @@ const CartList = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-white h-screen">
       <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>{" "}
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
