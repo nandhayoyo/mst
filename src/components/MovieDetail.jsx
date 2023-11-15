@@ -12,14 +12,16 @@ const MovieDetail = ({ movie }) => {
   useEffect(() => {
     const fetchMovieDetail = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const randomPrice = generateRandomPrice();
         setGeneratedPrice(randomPrice.toLocaleString("id-ID"));
         setLoading(false);
       } catch (error) {
-        toast.error("Error fetching movie detail:", error, {
+        console.error("Error fetching movie detail:", error);
+        toast.error("Error fetching movie detail. Please try again later.", {
           position: "bottom-right",
         });
+        setLoading(false);
       }
     };
 
@@ -47,30 +49,39 @@ const MovieDetail = ({ movie }) => {
           <div className="skeleton h-96 w-full m-2 hidden lg:block"></div>
         </div>
       ) : (
-        <div className="flex h-screen flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
+        <div className="flex lg:h-screen flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
           <div className="image lg:w-1/3 ">
-            <img
-              className="rounded-xl"
-              src={movie.Poster}
-              alt={movie.Title}
-              width={500}
-            />
+            {movie && movie.Poster && (
+              <img
+                className="rounded-xl"
+                src={movie.Poster}
+                alt={movie.Title}
+                width={500}
+              />
+            )}
           </div>
           <div className="pt-10 mx-5 lg:w-1/3">
-            <h1 className="font-bold text-xl mb-4 text-white">
-              {" "}
-              {movie.Title}
-            </h1>
-            <h4 className="font-bold text-xl my-2 text-green-500">
-              Rp. {generatedPrice || "N/A"}
-            </h4>
-            <p className="py-3  text-white">{movie.Plot}</p>
-            <button
-              onClick={handleAddToCart}
-              className="font-bold bg-amber-200 rounded-lg p-3 mt-2 hover:bg-blue-200"
-            >
-              Add To Cart
-            </button>
+            {movie ? (
+              <>
+                <h1 className="font-bold text-xl mb-4 text-white">
+                  {movie.Title}
+                </h1>
+                <h4 className="font-bold text-xl my-2 text-green-500">
+                  Rp. {generatedPrice || "N/A"}
+                </h4>
+                <p className="py-3  text-white">{movie.Plot}</p>
+                <button
+                  onClick={handleAddToCart}
+                  className="font-bold bg-amber-200 rounded-lg p-3 mt-2 hover:bg-blue-200"
+                >
+                  Add To Cart
+                </button>
+              </>
+            ) : (
+              <p className="text-white h-screen">
+                ⚠️ Movie details not available. Please Reload page
+              </p>
+            )}
           </div>
           <div className="hidden lg:block lg:w-1/3 bg-slate-500 p-5 rounded-xl">
             <Cart />
