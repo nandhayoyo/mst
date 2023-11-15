@@ -8,7 +8,7 @@ export const getLatestMovies = async () => {
     let allMovies = [];
     let currentPage = 1;
 
-    while (allMovies.length < 70) {
+    while (allMovies.length < 50) {
       const response = await axios.get(apiUrl, {
         params: {
           apikey: apiKey,
@@ -26,7 +26,7 @@ export const getLatestMovies = async () => {
       currentPage++;
     }
 
-    return allMovies.slice(0, 70);
+    return allMovies.slice(0, 50);
   } catch (error) {
     console.error("Error fetching latest movies:", error);
     throw error;
