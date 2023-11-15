@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
 import Cart from "./CartList";
 import { useStore } from "../store";
 import { useEffect, useState } from "react";
 import { generateRandomPrice } from "../utils/moviePrice";
+import toast from "react-hot-toast";
 
 const MovieDetail = ({ movie }) => {
   const { addToCart } = useStore();
@@ -13,12 +13,13 @@ const MovieDetail = ({ movie }) => {
     const fetchMovieDetail = async () => {
       try {
         await new Promise((resolve) => setTimeout(resolve, 2000));
-
         const randomPrice = generateRandomPrice();
         setGeneratedPrice(randomPrice.toLocaleString("id-ID"));
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching movie detail:", error);
+        toast.error("Error fetching movie detail:", error, {
+          position: "bottom-right",
+        });
       }
     };
 
@@ -28,7 +29,7 @@ const MovieDetail = ({ movie }) => {
   const handleAddToCart = () => {
     const priceToAdd = generatedPrice;
     addToCart({ ...movie, Price: priceToAdd });
-    console.log("Product added to cart ::", { ...movie, Price: priceToAdd });
+    toast.success("Movie added to cartlist");
   };
 
   return (
@@ -46,7 +47,7 @@ const MovieDetail = ({ movie }) => {
           <div className="skeleton h-96 w-full m-2 hidden lg:block"></div>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
+        <div className="flex h-screen flex-col md:flex-row lg:grid-cols-3 justify-center lg:m-10 mx-auto">
           <div className="image lg:w-1/3 ">
             <img
               className="rounded-xl"
@@ -78,20 +79,6 @@ const MovieDetail = ({ movie }) => {
       )}
     </>
   );
-};
-
-MovieDetail.propTypes = {
-  movie: PropTypes.shape({
-    imdbID: PropTypes.string.isRequired,
-    Genre: PropTypes.string.isRequired,
-    // Poster: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Writer: PropTypes.string.isRequired,
-    Director: PropTypes.string.isRequired,
-    Actors: PropTypes.string.isRequired,
-    Plot: PropTypes.string.isRequired,
-    Year: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default MovieDetail;

@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useStore } from "../store/index";
 
 const CartList = () => {
@@ -5,11 +6,20 @@ const CartList = () => {
 
   const handleRemoveItem = (movieId) => {
     removeItemFromCart(movieId);
-    console.log(`Item with ID ${movieId} removed from cart`);
+    toast(`Quantity of item  decreased!`, {
+      icon: "⛔",
+    });
+  };
+
+  const handleClearCart = (movieId) => {
+    clearCart(movieId);
+    toast("Cleared item from cart!", {
+      icon: "❗",
+    });
   };
 
   return (
-    <div className="text-white h-screen">
+    <div className="text-white">
       <h2 className="lg:text-xl font-bold mb-4">Shopping Cart</h2>{" "}
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -56,7 +66,7 @@ const CartList = () => {
             </tbody>
           </table>
           <button
-            onClick={clearCart}
+            onClick={handleClearCart}
             className="font-bold bg-red-500 rounded-lg p-3 mt-2 hover:bg-red-600"
           >
             Clear Cart

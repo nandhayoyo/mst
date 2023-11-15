@@ -46,7 +46,7 @@ const Navbar = () => {
                     />
                   </svg>
 
-                  <h1 className="text-slate-100 ml-2">MST PROJECT</h1>
+                  <a href="/" className="text-slate-100 ml-2">MST PROJECT</a>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">

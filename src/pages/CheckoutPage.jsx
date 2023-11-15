@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { useStore } from "../store/index";
 import { generateRandomPrice } from "../utils/moviePrice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const CheckoutPage = () => {
   const { cart, clearCart, removeItemFromCart, addToCart } = useStore();
@@ -25,14 +26,31 @@ const CheckoutPage = () => {
 
   const handleRemoveItem = (movieId) => {
     removeItemFromCart(movieId);
-    console.log(`Item with ID ${movieId} removed from cart`);
+    // toast.success(`Quantity of item with ID ${movieId} decreased`);
+    toast(`Quantity of item with ID ${movieId} decreased!`, {
+      icon: "⛔",
+    });
   };
 
   const handleAddQuantity = (movieId) => {
     const existingItem = cart.find((item) => item.imdbID === movieId);
 
     addToCart({ ...existingItem, Price: generateRandomPrice }, true);
-    console.log(`Quantity of item with ID ${movieId} increased`);
+    toast.success(`Quantity of item with ID ${movieId} increased`);
+  };
+
+  const handleClearCart = (movieId) => {
+    clearCart(movieId);
+    // toast.success(`Cleared item from cart`);
+    toast("Cleared item from cart!", {
+      icon: "❗",
+    });
+  };
+
+  const handleUnderMaintenance = () => {
+    toast("This feature under maintenance", {
+      icon: "⚠️",
+    });
   };
 
   const calculateTotal = () => {
@@ -130,7 +148,7 @@ const CheckoutPage = () => {
             </table>
             <div className="flex justify-end">
               <button
-                onClick={clearCart}
+                onClick={handleClearCart}
                 className="font-bold bg-red-500 rounded-lg p-2 mt-2 hover:bg-red-600"
               >
                 Empty All Shopping List
@@ -244,7 +262,10 @@ const CheckoutPage = () => {
               />
             </div>
 
-            <button className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
+            <button
+              onClick={handleUnderMaintenance}
+              className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full"
+            >
               <div>
                 <p className="text-base leading-4">
                   Pay{" "}
