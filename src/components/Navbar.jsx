@@ -12,7 +12,7 @@ function classNames(...classes) {
 
 const Navbar = () => {
   return (
-    <Disclosure as="nav" className="bg-slate-600 rounded-2xl mb-10">
+    <Disclosure as="nav" className="bg-slate-600 rounded-2xl mb-5 lg:mb-10 mx-5">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden p-2">
-            <div className="space-y-1 px-2 pb-3 pt-2 bg-violet-300 rounded-xl">
+            <div className="space-y-1 px-2 pb-3 pt-2 bg-gray-500 rounded-xl">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

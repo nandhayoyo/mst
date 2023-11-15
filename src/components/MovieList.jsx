@@ -65,7 +65,7 @@ const MovieList = () => {
             </div>
           )}
         </div>
-        <div className="pagination-container bg-slate-500 p-3 rounded-xl text-white flex justify-center items-center mt-4 w-96">
+        <div className="pagination-container bg-slate-500 py-3 mx-5 px-5 rounded-xl text-white flex justify-center items-center mt-4 w-fit lg:w-96">
           <button
             onClick={handlePrevClick}
             disabled={currentPage === 1}

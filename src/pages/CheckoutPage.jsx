@@ -1,4 +1,3 @@
-// import Cart from "../components/CartList";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useStore } from "../store/index";
@@ -26,7 +25,6 @@ const CheckoutPage = () => {
 
   const handleRemoveItem = (movieId) => {
     removeItemFromCart(movieId);
-    // toast.success(`Quantity of item with ID ${movieId} decreased`);
     toast(`Quantity of item with ID ${movieId} decreased!`, {
       icon: "⛔",
     });
@@ -41,7 +39,6 @@ const CheckoutPage = () => {
 
   const handleClearCart = (movieId) => {
     clearCart(movieId);
-    // toast.success(`Cleared item from cart`);
     toast("Cleared item from cart!", {
       icon: "❗",
     });
@@ -63,7 +60,7 @@ const CheckoutPage = () => {
         <Navbar />
         {/* <Cart /> */}
         <div className="">
-          <div className="overflow-x-auto px-5 text-white">
+          <div className="overflow-x-auto lg:px-14 text-white">
             <table className="table ">
               {/* head */}
               <thead className="text-white">
@@ -146,25 +143,24 @@ const CheckoutPage = () => {
                 ))}
               </tbody>
             </table>
-            <div className="flex justify-end">
-              <button
-                onClick={handleClearCart}
-                className="font-bold bg-red-500 rounded-lg p-2 mt-2 hover:bg-red-600"
-              >
-                Empty All Shopping List
-              </button>
-            </div>
           </div>
 
           {/* Cekout */}
-
-          <div className="Checkout my-5 p-5 lg:mx-10 md:mx-10 bg-slate-400 rounded-xl">
+          <div className="flex justify-end mx-5 lg:mx-10 lg:px-2 md:px-4">
+            <button
+              onClick={handleClearCart}
+              className="font-bold bg-red-500 rounded-lg p-2 mt-2 hover:bg-red-600"
+            >
+              Clear Shopping List
+            </button>
+          </div>
+          <div className="Checkout my-5 mx-5 p-5 lg:mx-10 md:mx-10 bg-slate-200 rounded-xl">
             <label className="mt-8  text-base leading-4 text-gray-800">
               Email
             </label>
             <div className="mt-2 mb-5">
               <input
-                className="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                className="border border-gray-300 p-4 rounded-xl w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                 type="email"
                 placeholder="Email"
               />
@@ -176,19 +172,19 @@ const CheckoutPage = () => {
             <div className="mt-2 flex-col">
               <div>
                 <input
-                  className="border rounded-tl rounded-tr border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                  className="border rounded-tl-xl rounded-tr-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                   type="email"
                   placeholder="0000 1234 6549 15151"
                 />
               </div>
               <div className="flex-row flex mb-5">
                 <input
-                  className="border rounded-bl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                  className="border rounded-bl-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                   type="email"
                   placeholder="MM/YY"
                 />
                 <input
-                  className="border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                  className="border rounded-br-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                   type="email"
                   placeholder="CVC"
                 />
@@ -201,7 +197,7 @@ const CheckoutPage = () => {
             <div className="my-2 flex-col">
               <div>
                 <input
-                  className="border rounded border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                  className="border rounded-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                   type="email"
                   placeholder="Name on card"
                 />
@@ -214,8 +210,9 @@ const CheckoutPage = () => {
             <div className="mt-2 flex-col">
               <div className="relative">
                 <button
-                  className="text-left border rounded-tr rounded-tl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600 bg-white"
+                  className="text-left border rounded-tr-xl rounded-tl-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600 bg-white"
                   type="email"
+                  onClick={() => setMenu(!menu)}
                 >
                   {pulaus}
                 </button>
@@ -256,7 +253,7 @@ const CheckoutPage = () => {
                 </div>
               </div>
               <input
-                className="border rounded-bl rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                className="border rounded-bl-xl rounded-br-xl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                 type="text"
                 placeholder="ZIP"
               />
@@ -264,11 +261,11 @@ const CheckoutPage = () => {
 
             <button
               onClick={handleUnderMaintenance}
-              className="mt-8 border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full"
+              className="mt-8 border border-transparent rounded-xl hover:border-gray-300 bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 px-10"
             >
               <div>
                 <p className="text-base leading-4">
-                  Pay{" "}
+                  Total{" "}
                   <span>Rp. {calculateTotal().toLocaleString("id-ID")}</span>
                 </p>
               </div>

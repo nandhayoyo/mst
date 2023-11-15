@@ -2,7 +2,9 @@
   background-color: #334155;
   /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+
   /* text-align: center; */
 }
 
