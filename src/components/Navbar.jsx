@@ -1,18 +1,35 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useLocation } from "react-router-dom";
 
-const navigation = [
-  { name: "Dashboard", href: "/", cursrent: false },
-  { name: "Checkout", href: "/checkout", current: false },
-];
+// const navigation = [
+//     const location = useLocation();
+
+//   { name: "Dashboard", href: "/", cursrent: false },
+//   { name: "Checkout", href: "/checkout", current: false },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+  const location = useLocation();
+
+  const navigation = [
+    { name: "Dashboard", href: "/", current: location.pathname === "/" },
+    {
+      name: "Checkout",
+      href: "/checkout",
+      current: location.pathname === "/checkout",
+    },
+  ];
+
   return (
-    <Disclosure as="nav" className="bg-slate-600 rounded-2xl mb-5 lg:mb-10 mx-5">
+    <Disclosure
+      as="nav"
+      className="bg-slate-600 rounded-2xl mb-5 lg:mb-10 mx-5"
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -46,7 +63,9 @@ const Navbar = () => {
                     />
                   </svg>
 
-                  <a href="/" className="text-slate-100 ml-2">MST PROJECT</a>
+                  <a href="/" className="text-slate-100 ml-2">
+                    MST PROJECT
+                  </a>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
