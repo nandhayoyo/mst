@@ -6,16 +6,18 @@ const CartList = () => {
 
   const handleRemoveItem = (movieId) => {
     removeItemFromCart(movieId);
-    toast(`Quantity of item  decreased!`, {
-      icon: "⛔",
-    });
+    // toast(`Quantity of item  decreased!`, {
+    //   icon: "⛔",
+    // });
+    toast.error(`Quantity of item  decreased!`);
   };
 
   const handleClearCart = (movieId) => {
     clearCart(movieId);
-    toast("Cleared item from cart!", {
-      icon: "❗",
-    });
+    // toast("Cleared item from cart!", {
+    //   icon: "❗",
+    // });
+    toast.success(`Cleared item from cart!`);
   };
 
   return (
