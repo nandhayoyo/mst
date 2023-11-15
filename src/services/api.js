@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiKey = "22d5d48";
-const apiUrl = "http://www.omdbapi.com/";
+const apiUrl = "https://www.omdbapi.com/";
 
 export const getLatestMovies = async () => {
   try {
