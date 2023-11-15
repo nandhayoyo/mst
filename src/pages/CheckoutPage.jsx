@@ -25,11 +25,11 @@ const CheckoutPage = () => {
 
   const handleRemoveItem = (movieId) => {
     removeItemFromCart(movieId);
-    // toast(`Quantity of item with ID ${movieId} decreased!`, {
-    //   icon: "⛔",
-    // });
+    toast(`Quantity of item with ID ${movieId} decreased!`, {
+      icon: "⛔",
+    });
 
-    toast.error(`Quantity of item  decreased!`);
+    // toast.error(`Quantity of item  decreased!`);
   };
 
   const handleAddQuantity = (movieId) => {
@@ -41,10 +41,10 @@ const CheckoutPage = () => {
 
   const handleClearCart = (movieId) => {
     clearCart(movieId);
-    // toast("Cleared item from cart!", {
-    //   icon: "❗",
-    // });
-    toast.success(`Cleared item from cart`);
+    toast("Cleared item from cart!", {
+      icon: "❗",
+    });
+    // toast.success(`Cleared item from cart`);
   };
 
   const handleUnderMaintenance = () => {
