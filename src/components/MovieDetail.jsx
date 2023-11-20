@@ -3,30 +3,50 @@ import { useStore } from "../store";
 import { useEffect, useState } from "react";
 import { generateRandomPrice } from "../utils/moviePrice";
 import toast from "react-hot-toast";
+import { getMovieById } from "../services/api";
 
-const MovieDetail = ({ movie }) => {
+const MovieDetail = ({ id }) => {
   const { addToCart } = useStore();
   const [generatedPrice, setGeneratedPrice] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     const fetchMovieDetail = async () => {
+      setLoading(true);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const movieData = await getMovieById(id);
         const randomPrice = generateRandomPrice();
         setGeneratedPrice(randomPrice.toLocaleString("id-ID"));
+        setMovie(movieData);
+        console.log("res", movieData);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching movie detail:", error);
-        toast.error("Error fetching movie detail. Please try again later.", {
-          position: "bottom-right",
-        });
-        setLoading(false);
+        console.error(`Error fetching movie with id ${id}:`, error);
       }
     };
 
     fetchMovieDetail();
-  }, []);
+  }, [id]);
+
+  // useEffect(() => {
+  //   const fetchMovieDetail = async () => {
+  //     try {
+  //       await new Promise((resolve) => setTimeout(resolve, 1000));
+  //       const randomPrice = generateRandomPrice();
+  //       setGeneratedPrice(randomPrice.toLocaleString("id-ID"));
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching movie detail:", error);
+  //       toast.error("Error fetching movie detail. Please try again later.", {
+  //         position: "bottom-right",
+  //       });
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchMovieDetail();
+  // }, []);
 
   const handleAddToCart = () => {
     const priceToAdd = generatedPrice;
